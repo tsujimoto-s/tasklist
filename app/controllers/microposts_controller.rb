@@ -14,6 +14,9 @@ class MicropostsController < ApplicationController
       render 'toppages/index'
     end
   end
+  
+  def edit
+  end
 
   def destroy
     @micropost.destroy
