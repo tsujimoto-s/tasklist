@@ -3,6 +3,9 @@
       
 <%= form_for(@micropost) do |f| %>
 
+<%= render 'layouts/error_messages', model: f.object %>
+</div>
+
         <div class="form-group">
             <%= f.text_field :status, class: 'form-control',placeholder: 'status', rows: 5 %>
         </div>
