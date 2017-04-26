@@ -1,0 +1,17 @@
+<div class="row">
+    <aside class="col-md-4">
+      
+<%= form_for(@micropost) do |f| %>
+
+        <div class="form-group">
+            <%= f.text_field :status, class: 'form-control',placeholder: 'status', rows: 5 %>
+        </div>
+
+        <div class="form-group">
+<%= f.text_area :content, class: 'form-control', placeholder: 'taskを入力',rows: 5 %>
+        </div>
+        
+<%= f.submit 'Post', class: 'btn btn-primary btn-block' %>
+
+      
+<% end %>

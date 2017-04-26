@@ -1,6 +1,6 @@
 class MicropostsController < ApplicationController
   before_action :require_user_logged_in
-  before_action :correct_user, only: [:destroy] 
+  before_action :correct_user, only: [:destroy, :edit, :update] 
   
 
   def create
@@ -16,12 +16,25 @@ class MicropostsController < ApplicationController
   end
   
   def edit
+    @micropost = current_user.microposts.find(params[:id])
   end
 
   def destroy
     @micropost.destroy
     flash[:success] = 'メッセージを削除しました。'
     redirect_back(fallback_location: root_path)
+  end
+  
+  def update
+    @micropost = current_user.microposts.find(params[:id])
+
+    if @micropost.update(micropost_params)
+      flash[:success] = 'Message は正常に更新されました'
+      redirect_to root_path
+    else
+      flash.now[:danger] = 'Message は更新されませんでした'
+      render :edit
+    end
   end
 
   private
